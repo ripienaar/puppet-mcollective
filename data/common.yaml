@@ -64,6 +64,7 @@ mcollective::service_enable: true
 mcollective::plugin_owner: "root"
 mcollective::plugin_group: "root"
 mcollective::plugin_mode: "0644"
+mcollective::plugin_executable_mode: "0755"
 mcollective::bindir: "/usr/bin"
 mcollective::libdir: "/opt/puppetlabs/mcollective/plugins"
 mcollective::configdir: "/etc/puppetlabs/mcollective"

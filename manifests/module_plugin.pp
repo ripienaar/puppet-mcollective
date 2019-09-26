@@ -6,6 +6,7 @@ define mcollective::module_plugin (
   Array[String] $server_directories = [],
   Array[String] $common_files = [],
   Array[String] $common_directories = [],
+  Array[String] $executable_files = [],
   Boolean $manage_gem_dependencies = true,
   Hash $gem_dependencies = {},
   Boolean $manage_package_dependencies = true,
@@ -25,6 +26,7 @@ define mcollective::module_plugin (
   Optional[String] $owner = $mcollective::plugin_owner,
   Optional[String] $group = $mcollective::plugin_group,
   Optional[String] $mode = $mcollective::plugin_mode,
+  Optional[String] $executable_mode = $mcollective::plugin_executable_mode,
   Enum["present", "absent"] $ensure = "present"
 ) {
   if $client or $server {
@@ -118,12 +120,18 @@ define mcollective::module_plugin (
         $f_tag = undef
       }
 
+      if $file in $executable_files {
+        $_mode = $executable_mode
+      } else {
+        $_mode = $mode
+      }
+
       file{"${libdir}/mcollective/${file}":
         ensure => $ensure,
         source => "puppet:///modules/${caller_module_name}/mcollective/${file}",
         owner  => $owner,
         group  => $group,
-        mode   => $mode,
+        mode   => $_mode,
         tag    => $f_tag
       }
 

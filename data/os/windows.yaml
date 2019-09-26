@@ -1,6 +1,7 @@
 mcollective::plugin_owner: ~
 mcollective::plugin_group: ~
 mcollective::plugin_mode: ~
+mcollective::plugin_executable_mode: ~
 
 mcollective::bindir: "C:/Program Files/Puppet Labs/Puppet/bin"
 mcollective::libdir: "C:/ProgramData/PuppetLabs/mcollective/plugins"

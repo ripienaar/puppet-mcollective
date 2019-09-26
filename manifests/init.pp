@@ -19,6 +19,7 @@
 # @param plugin_owner The default user who will own plugin files
 # @param plugin_group The default group who will own plugin files
 # @param plugin_mode The default mode plugin files will have
+# @param plugin_executable_mode The default mode executable plugin files will have
 # @param required_directories Any extra directories that should be created before copying plugins and configuration
 # @param policy_default When managing plugin policies this will be the default allow/deny
 # @param site_policies Policies to apply to all agents after any module specific policies
@@ -56,6 +57,7 @@ class mcollective (
   Optional[String] $plugin_owner,
   Optional[String] $plugin_group,
   Optional[String] $plugin_mode,
+  Optional[String] $plugin_executable_mode,
   Array[String] $required_directories = [],
   Mcollective::Policy_action $policy_default,
   Array[Mcollective::Policy] $site_policies = [],
